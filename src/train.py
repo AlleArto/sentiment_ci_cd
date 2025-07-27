@@ -10,7 +10,7 @@ from transformers import (
     AutoModelForSequenceClassification,
     TrainingArguments,
     Trainer,
-    DataCollatorWithPadding, PreTrainedTokenizerBase,
+    DataCollatorWithPadding
 )
 from config import (
     BASE_MODEL,
@@ -57,7 +57,6 @@ def main():
         train_dataset=ds_tok["train"],
         eval_dataset=ds_tok["validation"],
         data_collator=DataCollatorWithPadding(tokenizer),
-        processing_class=tokenizer,
         compute_metrics=compute_metrics,
     )
     trainer.train()
