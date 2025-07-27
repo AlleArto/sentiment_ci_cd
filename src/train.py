@@ -43,8 +43,6 @@ def main():
         per_device_train_batch_size=BATCH,
         per_device_eval_batch_size=BATCH,
         num_train_epochs=args.epochs,
-        eval_strategy="epoch",
-        save_strategy="epoch",
         load_best_model_at_end=True,
         metric_for_best_model="f1",
         push_to_hub=args.push,
@@ -57,7 +55,7 @@ def main():
         train_dataset=ds_tok["train"],
         eval_dataset=ds_tok["validation"],
         data_collator=DataCollatorWithPadding(tokenizer),
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
         compute_metrics=compute_metrics,
     )
     trainer.train()
