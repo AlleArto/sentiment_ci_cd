@@ -6,6 +6,7 @@ on:
 
 jobs:
   train-deploy:
+    needs: lint-test
     runs-on: ubuntu-latest
     environment: sentiment_env
     steps:
