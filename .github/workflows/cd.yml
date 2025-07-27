@@ -9,6 +9,7 @@ jobs:
   train-deploy:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+    environment: sentiment_env
     steps:
       - uses: actions/checkout@v4
 
