@@ -71,7 +71,3 @@ L'obiettivo del progetto è la realizzazione di un modello di sentiment analysis
 - **PyTorch:** 2.7.1+cu126
 - **Datasets:** 4.0.0
 - **Tokenizers:** 0.21.2
-
----
-
-Questa struttura ti permette di coprire tutte le aree richieste: scelte progettuali, implementazione, risultati, limiti e prospettive. Puoi aggiungere dettagli tecnici, esempi di codice e grafici se necessario.
