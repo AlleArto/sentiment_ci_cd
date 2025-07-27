@@ -6,7 +6,7 @@ from pathlib import Path
 BASE_MODEL = os.getenv("BASE_MODEL", "cardiffnlp/twitter-roberta-base-sentiment-latest")
 HF_REPO_ID = os.getenv("HF_REPO_ID", "AlleArto/twitter-sentiment-roberta-ft")
 
-DATASET_NAME = os.getenv("DATASET_NAME", "BAJIRAO/imdb_sentiment_3000")
+DATASET_NAME = os.getenv("DATASET_NAME", "Ocelot02/tweet-sentiment-ita-eng")
 
 # Addestramento
 EPOCHS = int(os.getenv("EPOCHS", 3))
