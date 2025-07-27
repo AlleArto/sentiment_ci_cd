@@ -1,13 +1,13 @@
 name: CD
 on:
   push:
-    branches: [main]      # oppure 'tags: ["v*"]' se vuoi solo su release
-  workflow_dispatch:      # trigger manuale
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   train-deploy:
     runs-on: ubuntu-latest
-    environment: production
+    environment: sentiment_env
     steps:
       - uses: actions/checkout@v4
 
@@ -21,7 +21,7 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          hf auth login --token "${{ secrets.HF_TOKEN }}" --add-to-git-credential
+          hf auth login --token "$HF_TOKEN" --add-to-git-credential
 
       - name: Train & push
         env:
