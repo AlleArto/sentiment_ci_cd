@@ -4,7 +4,7 @@ from pathlib import Path
 
 # Modello base e destinazione su HF
 BASE_MODEL = os.getenv("BASE_MODEL", "cardiffnlp/twitter-roberta-base-sentiment-latest")
-HF_REPO_ID = os.getenv("HF_REPO_ID", "YOUR_HF_USERNAME/twitter-sentiment-roberta-ft")
+HF_REPO_ID = os.getenv("HF_REPO_ID", "AlleArto/twitter-sentiment-roberta-ft")
 
 # Dataset
 DATASET_NAME = os.getenv("DATASET_NAME", "cardiffnlp/tweet_eval")
