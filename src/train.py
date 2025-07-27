@@ -31,7 +31,7 @@ def parse_args():
 
 def main():
     args = parse_args()
-    ds_tok, tokenizer = load_tokenized_dataset(sample_size=800)
+    ds_tok, tokenizer = load_tokenized_dataset()
 
     model = AutoModelForSequenceClassification.from_pretrained(
         BASE_MODEL, num_labels=3
