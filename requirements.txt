@@ -1,0 +1,16 @@
+# Runtime
+torch>=2.3.0
+transformers>=4.41.0
+datasets>=2.19.0
+evaluate>=0.4.2
+huggingface_hub>=0.23.0
+
+# CLI / deploy
+gradio>=4.27.0
+python-dotenv>=1.0.1
+
+# Dev & CI
+pytest>=8.0.0
+flake8>=7.0.0
+black>=24.4.0
+isort>=5.13.2

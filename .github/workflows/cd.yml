@@ -1,0 +1,30 @@
+name: CD
+on:
+  push:
+    branches: [main]      # oppure 'tags: ["v*"]' se vuoi solo su release
+  workflow_dispatch:      # trigger manuale
+
+jobs:
+  train-deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - run: pip install -r requirements.txt
+
+      - name: Login to HuggingFace Hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          huggingface-cli login --token "$HF_TOKEN" --add-to-git-credential
+
+      - name: Train & push
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          python src/train.py --epochs 3 --push
