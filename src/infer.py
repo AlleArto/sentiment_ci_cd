@@ -1,6 +1,6 @@
 """Pipeline di inferenza + demo Gradio."""
 from transformers import pipeline
-from .config import HF_REPO_ID
+from config import HF_REPO_ID
 
 def sentiment_pipeline():
     return pipeline("sentiment-analysis", model=HF_REPO_ID)

@@ -1,6 +1,6 @@
 """Smoke‑test: verifica che train() restituisca metriche senza errori."""
 
-import importlib, types
+import importlib
 
 def test_train_smoke(tmp_path, monkeypatch):
     # Patch checkpoint dir a una cartella temporanea
@@ -13,4 +13,4 @@ def test_train_smoke(tmp_path, monkeypatch):
     monkeypatch.setattr(train, "parse_args", lambda: Namespace(epochs=1, push=False))
     train.main()
 
-    assert (config.CHECKPOINT_DIR).exists()
+    assert config.CHECKPOINT_DIR.exists()

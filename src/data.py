@@ -1,7 +1,7 @@
 """Gestione dataset: download, tokenizzazione, split."""
 from datasets import load_dataset
 from transformers import AutoTokenizer
-from .config import BASE_MODEL, DATASET_NAME, DATASET_CONFIG
+from config import BASE_MODEL, DATASET_NAME, DATASET_CONFIG
 
 def load_tokenized_dataset():
     ds = load_dataset(DATASET_NAME, DATASET_CONFIG)

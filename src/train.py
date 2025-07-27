@@ -12,8 +12,7 @@ from transformers import (
     Trainer,
     DataCollatorWithPadding,
 )
-from huggingface_hub import HfApi
-from .config import (
+from config import (
     BASE_MODEL,
     HF_REPO_ID,
     EPOCHS,
@@ -21,8 +20,8 @@ from .config import (
     LR,
     CHECKPOINT_DIR,
 )
-from .data import load_tokenized_dataset
-from .metrics import compute_metrics
+from data import load_tokenized_dataset
+from metrics import compute_metrics
 
 def parse_args():
     p = argparse.ArgumentParser()
