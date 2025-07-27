@@ -56,8 +56,8 @@ def main():
         args=training_args,
         train_dataset=ds_tok["train"],
         eval_dataset=ds_tok["validation"],
-        processing_class=PreTrainedTokenizerBase.from_pretrained(pretrained_model_name_or_path=BASE_MODEL),
         data_collator=DataCollatorWithPadding(tokenizer),
+        processing_class=tokenizer,
         compute_metrics=compute_metrics,
     )
     trainer.train()
