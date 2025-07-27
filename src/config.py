@@ -10,7 +10,7 @@ DATASET_NAME = os.getenv("DATASET_NAME", "Ocelot02/tweet-sentiment-ita-eng")
 
 # Addestramento
 EPOCHS = int(os.getenv("EPOCHS", 3))
-BATCH = int(os.getenv("BATCH", 64))
+BATCH = int(os.getenv("BATCH", 32))
 LR = float(os.getenv("LR", 2e-5))
 
 # Percorsi
