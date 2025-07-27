@@ -57,6 +57,7 @@ def main():
         train_dataset=ds_tok["train"],
         eval_dataset=ds_tok["validation"],
         data_collator=DataCollatorWithPadding(tokenizer),
+        tokenizer=tokenizer,
         compute_metrics=compute_metrics,
     )
     trainer.train()
