@@ -43,6 +43,8 @@ def main():
         per_device_train_batch_size=BATCH,
         per_device_eval_batch_size=BATCH,
         num_train_epochs=args.epochs,
+        eval_strategy="steps",
+        save_strategy="steps",
         load_best_model_at_end=True,
         metric_for_best_model="f1",
         push_to_hub=args.push,
