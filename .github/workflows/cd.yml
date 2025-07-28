@@ -44,7 +44,7 @@ jobs:
         with:
           name: monitoring_report
           path: |
-            report.txt
-            report_distribuzione_classi.png
-            report_distribuzione_confidence.png
+            reports/report.txt
+            reports/report_distribuzione_classi.png
+            reports/report_distribuzione_confidence.png
 
