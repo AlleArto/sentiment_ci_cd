@@ -1,6 +1,11 @@
+"""
+Modulo per il caricamento e la tokenizzazione del dataset per la sentiment analysis.
+Fornisce la funzione load_tokenized_dataset per restituire dataset e tokenizer pronti all'uso.
+"""
+
 from datasets import load_dataset
 from transformers import AutoTokenizer
-from config import BASE_MODEL, DATASET_NAME
+from src.config import BASE_MODEL, DATASET_NAME
 
 def load_tokenized_dataset(train_size=150, val_size=50, test_size=50):
     ds = load_dataset(DATASET_NAME)

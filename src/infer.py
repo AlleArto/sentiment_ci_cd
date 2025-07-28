@@ -1,3 +1,8 @@
+"""
+Modulo per la predizione e il logging dei risultati di sentiment analysis.
+Fornisce funzioni per loggare e predire sentiment su testo libero.
+"""
+
 import csv
 from datetime import datetime
 

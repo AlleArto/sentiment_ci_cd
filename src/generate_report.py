@@ -1,3 +1,8 @@
+"""
+Script per la generazione di report grafici sulla distribuzione delle classi e delle confidence
+delle predizioni effettuate dal modello di sentiment analysis.
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 

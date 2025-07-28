@@ -1,3 +1,8 @@
+"""
+Script per la generazione di report di monitoring sulla distribuzione delle classi predette e sull'andamento della confidence nel tempo.
+Utilizza i log delle predizioni per visualizzare possibili drift o anomalie.
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 

@@ -1,4 +1,6 @@
-"""Configurazione centralizzata (modificabile via env)."""
+"""Configurazione centralizzata del progetto di sentiment analysis.
+Permette la modifica dei parametri tramite variabili d'ambiente."""
+
 import os
 from pathlib import Path
 

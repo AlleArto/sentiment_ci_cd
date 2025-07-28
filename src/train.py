@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 """
-Addestramento + (opz.) push to HuggingFace Hub.
-
-Esegui:
-$ python src/train.py --push
+Modulo per l'addestramento del modello di sentiment analysis e (opzionalmente) il push su HuggingFace Hub.
+Esecuzione: python src/train.py --push
 """
 import argparse
 from transformers import (
@@ -12,7 +10,7 @@ from transformers import (
     Trainer,
     DataCollatorWithPadding
 )
-from config import (
+from src.config import (
     BASE_MODEL,
     HF_REPO_ID,
     EPOCHS,
@@ -20,8 +18,8 @@ from config import (
     LR,
     CHECKPOINT_DIR,
 )
-from data import load_tokenized_dataset
-from metrics import compute_metrics
+from src.data import load_tokenized_dataset
+from src.metrics import compute_metrics
 
 def parse_args():
     p = argparse.ArgumentParser()
