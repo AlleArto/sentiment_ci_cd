@@ -3,6 +3,7 @@ Inferenza e logging predizioni sentiment.
 Eseguibile sia come modulo (`python -m src.infer --batch test`)
 sia come funzione importabile.
 """
+
 import csv
 import argparse
 from datetime import datetime
@@ -51,7 +52,7 @@ def batch_inference(split: str = "test", sample_size: int | None = None):
     for row in ds:
         predict_and_log(row["text"], pipe)
 
-    print(f"✅ Batch inference completata su {len(ds)} esempi. Log salvato in {LOG_FILE}.")
+    print(f"Batch inference completata su {len(ds)} esempi. Log salvato in {LOG_FILE}.")
 
 
 # ---------- CLI ----------

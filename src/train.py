@@ -3,6 +3,7 @@
 Modulo per l'addestramento del modello di sentiment analysis e (opzionalmente) il push su HuggingFace Hub.
 Esecuzione: python src/train.py --push
 """
+
 import argparse
 from transformers import (
     AutoModelForSequenceClassification,
@@ -65,7 +66,7 @@ def main():
 
     if args.push:
         trainer.push_to_hub()
-        print(f"✅  Modello pubblicato su https://huggingface.co/{HF_REPO_ID}")
+        print(f"Modello pubblicato su https://huggingface.co/{HF_REPO_ID}")
 
 if __name__ == "__main__":
     main()

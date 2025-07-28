@@ -25,7 +25,7 @@ plt.show()
 
 counts = df["label"].value_counts(normalize=True)
 if any(counts > 0.8):
-    print("⚠️ Potenziale drift: una classe domina >80% delle predizioni")
+    print("Potenziale drift: una classe domina >80% delle predizioni")
 
 
 df["true_label"] = ...
