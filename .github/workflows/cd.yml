@@ -32,13 +32,13 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          python src/train.py --epochs 4 --push
+          python -m src/train.py --epochs 4 --push
 
       - name: Inference & log
-        run: python infer_and_log.py
+        run: python -m src/infer.py
 
       - name: Generate monitoring report
-        run: python generate_report.py
+        run: python -m src/generate_report.py
 
       - uses: actions/upload-artifact@v4
         with:
