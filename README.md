@@ -88,7 +88,7 @@ L’intero ciclo di vita (training, deploy, monitoraggio, reportistica) è compl
 
 - Logging automatico di predizione (predictions_log.csv).
 
-## 3.6 Monitoraggio & Reportistica
+## 3.5 Monitoraggio & Reportistica
 Script per:
 
 - Grafico distribuzione classi predette (report_distribuzione_classi.png)
