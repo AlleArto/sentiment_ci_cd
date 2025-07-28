@@ -29,4 +29,4 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          python src/train.py --epochs 5 --push
+          python src/train.py --epochs 3 --push
