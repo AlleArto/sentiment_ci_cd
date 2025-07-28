@@ -3,34 +3,47 @@ Script per la generazione di report grafici sulla distribuzione delle classi e d
 delle predizioni effettuate dal modello di sentiment analysis.
 """
 
+from pathlib import Path
 import pandas as pd
+import matplotlib
+matplotlib.use("agg")
 import matplotlib.pyplot as plt
+from src.infer import LOG_FILE
 
-df = pd.read_csv("predictions_log.csv", header=None,
+# ----- fail‑safe -----
+LOG_FILE = Path(LOG_FILE)
+if not LOG_FILE.exists():
+    print("⚠️  predictions_log.csv non trovato: salto generazione report.")
+    exit(0)
+
+# ----- lettura dati -----
+df = pd.read_csv(LOG_FILE, header=None,
                  names=["timestamp", "text", "label", "confidence"])
 
-plt.figure(figsize=(5,4))
+# ----- output dir -----
+OUT = Path("reports")
+OUT.mkdir(exist_ok=True)
+
+# distribuzione classi
+plt.figure(figsize=(5, 4))
 df["label"].value_counts().plot(kind="bar")
 plt.title("Distribuzione Classi Predette")
-plt.xlabel("Sentiment")
-plt.ylabel("Conteggio")
 plt.tight_layout()
-plt.savefig("report_distribuzione_classi.png")
+plt.savefig(OUT / "report_distribuzione_classi.png")
 
-plt.figure(figsize=(5,4))
+# distribuzione confidence
+plt.figure(figsize=(5, 4))
 df["confidence"].plot(kind="hist", bins=20)
 plt.title("Distribuzione Confidence")
-plt.xlabel("Confidence")
 plt.tight_layout()
-plt.savefig("report_distribuzione_confidence.png")
+plt.savefig(OUT / "report_distribuzione_confidence.png")
 
+# drift & testo
 counts = df["label"].value_counts(normalize=True)
-with open("report.txt", "w") as f:
+with open(OUT / "report.txt", "w") as f:
     f.write("Distribuzione classi:\n")
     f.write(str(counts) + "\n\n")
-    if any(counts > 0.8):
-        f.write("⚠️ Potenziale drift rilevato: una classe >80%\n")
-    else:
-        f.write("Nessun drift evidente.\n")
+    f.write("⚠️ Potenziale drift (>80%)\n" if any(counts > 0.8)
+            else "Nessun drift evidente.\n")
 
-print("✅ Report generato: report.txt e immagini PNG!")
+print(f"✅ Report generato in {OUT.resolve()}")

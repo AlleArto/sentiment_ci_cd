@@ -35,7 +35,7 @@ jobs:
           python -m src.train --epochs 4 --push
 
       - name: Inference & log
-        run: python -m src.infer
+        run: python -m src.infer --batch test --sample 100
 
       - name: Generate monitoring report
         run: python -m src.generate_report
