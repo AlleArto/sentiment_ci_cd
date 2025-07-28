@@ -1,14 +1,13 @@
-"""Smoke‑test: verifica che train() restituisca metriche senza errori."""
+import tempfile
+from pathlib import Path
+import src.train, src.data
+from argparse import Namespace
+from src import config
 
-import importlib
-
-def test_train_smoke(tmp_path, monkeypatch):
-    from src import config
-    monkeypatch.setattr(config, "CHECKPOINT_DIR", tmp_path / "ckpt")
-
-    train = importlib.import_module("src.train")
-    from argparse import Namespace
-    monkeypatch.setattr(train, "parse_args", lambda: Namespace(epochs=1, push=False))
-    train.main()
-
-    assert config.CHECKPOINT_DIR.exists()
+def test_train_smoke(monkeypatch):
+    tmp_ckpt = Path(tempfile.mkdtemp()) / "ckpt"
+    monkeypatch.setattr(config, "CHECKPOINT_DIR", tmp_ckpt)
+    monkeypatch.setattr(src.data, "load_tokenized_dataset", lambda: src.data.load_tokenized_dataset(train_size=50))
+    monkeypatch.setattr(src.train, "parse_args", lambda: Namespace(epochs=1, push=False))
+    src.train.main()
+    assert tmp_ckpt.exists()
