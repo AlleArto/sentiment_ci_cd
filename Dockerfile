@@ -5,4 +5,4 @@ COPY . /app
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "src/infer.py", "demo_gradio"]
+CMD ["python", "src/infer.py"]

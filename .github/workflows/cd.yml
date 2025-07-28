@@ -30,3 +30,18 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           python src/train.py --epochs 4 --push
+
+      - name: Inference & log
+        run: python infer_and_log.py
+
+      - name: Generate monitoring report
+        run: python generate_report.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: monitoring_report
+          path: |
+            report.txt
+            report_distribuzione_classi.png
+            report_distribuzione_confidence.png
+

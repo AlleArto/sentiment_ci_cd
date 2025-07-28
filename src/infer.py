@@ -1,23 +1,16 @@
-"""Pipeline di inferenza + demo Gradio."""
-from transformers import pipeline
-from config import HF_REPO_ID
+import csv
+from datetime import datetime
 
-def sentiment_pipeline():
-    return pipeline("sentiment-analysis", model=HF_REPO_ID)
+LOG_FILE = "predictions_log.csv"
 
-def predict(text: str):
-    pipe = sentiment_pipeline()
-    out = pipe(text)[0]
-    return f"{out['label']} ({out['score']:.3f})"
+def log_prediction(text, predicted_label, confidence):
+    with open(LOG_FILE, "a", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow([datetime.now().isoformat(), text, predicted_label, confidence])
 
-# --- Gradio demo ---
-def demo_gradio():
-    import gradio as gr
-
-    with gr.Blocks() as demo:
-        gr.Markdown("# Twitter Sentiment (fine‑tuned)")
-        inp = gr.Textbox(lines=3, placeholder="Scrivi un tweet…")
-        out = gr.Textbox()
-        btn = gr.Button("Analizza")
-        btn.click(lambda t: predict(t), inp, out)
-    demo.launch()
+def predict_and_log(text, pipe):
+    output = pipe(text)[0]
+    label = output['label']
+    score = output['score']
+    log_prediction(text, label, score)
+    return label, score
