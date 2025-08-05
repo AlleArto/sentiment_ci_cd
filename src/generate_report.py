@@ -10,19 +10,16 @@ matplotlib.use("agg")
 import matplotlib.pyplot as plt
 from src.infer import LOG_FILE
 
-# ----- fail‑safe -----
 LOG_FILE = Path(LOG_FILE)
 if not LOG_FILE.exists():
     print("predictions_log.csv non trovato: salto generazione report.")
     exit(0)
 
-# ----- lettura dati -----
 df = pd.read_csv(LOG_FILE, header=None,
                  names=["timestamp", "text", "label", "confidence"])
 df["confidence"] = pd.to_numeric(df["confidence"], errors="coerce")
 df = df.dropna(subset=["confidence"])
 
-# ----- output dir -----
 OUT = Path("reports")
 OUT.mkdir(exist_ok=True)
 

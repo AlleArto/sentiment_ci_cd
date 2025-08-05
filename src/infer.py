@@ -17,7 +17,6 @@ from src.config import HF_REPO_ID, DATASET_NAME
 LOG_FILE = Path("predictions_log.csv")
 
 
-# ---------- logging ----------
 def _write_header_if_needed():
     if not LOG_FILE.exists():
         with LOG_FILE.open("w", newline="", encoding="utf-8") as f:
@@ -40,7 +39,6 @@ def predict_and_log(text: str, pipe):
     return out["label"], out["score"]
 
 
-# ---------- inferenza batch ----------
 def batch_inference(split: str = "test", sample_size: int | None = None):
     """Esegue inferenza sullo split indicato del dataset e logga tutte le predizioni."""
     ds = load_dataset(DATASET_NAME)[split]
@@ -55,7 +53,6 @@ def batch_inference(split: str = "test", sample_size: int | None = None):
     print(f"Batch inference completata su {len(ds)} esempi. Log salvato in {LOG_FILE}.")
 
 
-# ---------- CLI ----------
 def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument(

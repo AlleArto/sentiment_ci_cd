@@ -2,7 +2,6 @@
 Modulo per il calcolo delle metriche di valutazione (accuracy e f1) per la sentiment analysis.
 Fornisce la funzione compute_metrics per l'integrazione con Trainer di HuggingFace.
 """
-
 import evaluate
 import numpy as np
 
